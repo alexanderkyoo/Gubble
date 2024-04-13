@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"><nav>
+    <a href="{{ url_for('index') }}" class="login-button">Home</a>
+    {% if logged_in %}
+        <a href="{{ url_for('inventory') }}" class="login-button">Inventory</a>
+        <a href="{{ url_for('recieptscanner') }}" class="login-button">Reciept Scan</a>
+        <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+    {% else %}
+        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+    {% endif %}
+</nav><style>
+    .login-button {
+        display: inline-block;
+        background-color: #008CBA; /* Blue background */
+        border: none;  /* Remove borders */
+        color: white;  /* White text */
+        padding: 15px 32px;  /* Some padding */
+        text-align: center;  /* Centered text */
+        text-decoration: none;  /* Remove underline */
+        font-size: 16px;  /* Set a font size */
+        margin: 4px 2px;  /* Some margin */
+        cursor: pointer;  /* Mouse pointer on hover */
+    }
+
+    /* Darker background on mouse-over */
+    .login-button:hover {
+        background-color: RoyalBlue;
+    }
+</style>
+        <title>Home Page</title>
+        <!-- Add your CSS files here -->
+        <style>
+            body {
+                background-color: var(--sk-body-background-color, #fff);
+                color: var(--sk-body-text-color, #1d1d1f);
+                font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-size: 17px;
+                font-style: normal;
+                font-weight: 400;
+                letter-spacing: -0.022em;
+                line-height: 1.47059;
+            }
+        </style>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1>Gubble</h1>
+        </header>
+
+        <main>
+            <!-- Display the user data if it's available -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+</head>
+<body>
+    <main>
+        <!-- Display the user data if it's available -->
+        {% if logged_in%}
+            <h2>Hello, {{ user_data.name }}!</h2>
+            <p>Your email is {{ user_data.email }}</p>
+        {% else %}
+            <p>Please log in to see your data.</p>
+        {% endif %}
+    </main>
+
+</body>
+</html>
+

@@ -94,3 +94,7 @@ def increase_quantity(item_id):
 def decrease_quantity(item_id):
     db.update_quantity(item_id, -1)
     return flask.redirect(flask.url_for('inventory'))
+
+@app.route('/recieptscanner')
+def recieptscanner():
+    return flask.render_template('recieptscanner.html')
