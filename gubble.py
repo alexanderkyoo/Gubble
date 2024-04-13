@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 import flask
 import json
 import html
-import html
 import db
 from authlib.integrations.flask_client import OAuth
 from authlib.jose.errors import InvalidClaimError
