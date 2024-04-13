@@ -16,11 +16,13 @@ app.secret_key = 'your-secret-key'
 
 oauth = OAuth()
 oauth.init_app(app)
+client_id = os.getenv('AUTH_ID')
+client_secret = os.getenv('AUTH_SECRET')
 
 google = oauth.register(
     name='google',
-    client_id='541765546368-g500muffag8782cvnt35t1hi499fgisu.apps.googleusercontent.com',
-    client_secret='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',
+    client_id=client_id,
+    client_secret=client_secret,
     #access_token_url='https://accounts.google.com/o/oauth2/token',
     access_token_params=None,
     #authorize_url='https://accounts.google.com/o/oauth2/auth',
