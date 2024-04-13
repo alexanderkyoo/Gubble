@@ -44,8 +44,16 @@ def index():
 @app.route('/authorize')
 def authorize():
     google = oauth.create_client('google')
-    token = google.authorize_access_token()
-    user_info = google.userinfo() 
+    resp = google.authorize_access_token()
+    
+    if resp is None or resp.get('access_token') is None:
+        return 'Access denied', 403
+
+    flask.session['token'] = resp['access_token']
+
+    resp = google.get('userinfo')
+    user_info = resp.json()
+
     flask.session['profile'] = user_info
     flask.session.permanent = True
     flask.session['user_id'] = db.get_or_create_user(user_info['email'], user_info['name'])
