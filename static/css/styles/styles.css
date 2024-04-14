@@ -122,6 +122,7 @@ div .dot {
 }
 
 .styled-table {
+    align-content: center;
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -156,4 +157,12 @@ div .dot {
 .styled-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}
+
+.tb-row {
+    background-color: #f3f3f3;
+}
+
+.column-name {
+    padding: 10px
 }

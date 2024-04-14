@@ -31,14 +31,14 @@
                         <table class="styled-table">
                             <thead>
                                 <tr>
-                                    <th>Item ID</th>
-                                    <th>Item Description</th>
-                                    <th>Quantity</th>
+                                    <th class="column-name">Item ID</th>
+                                    <th class="column-name">Item Description</th>
+                                    <th class="column-name">Quantity</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for item in items %}
-                                <tr>
+                                <tr class="tb-row">
                                     <td>{{ item.item_id }}</td>
                                     <td>{{ item.description }}</td>
                                     <td>{{ item.quantity }}</td>
