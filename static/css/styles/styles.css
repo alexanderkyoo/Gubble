@@ -121,47 +121,57 @@ div .dot {
     }
 }
 
+/* Table styling */
 .styled-table {
-    display: flex;
-    justify-content: space-around;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
+    width: 100%; /* Full width of its container */
+    border-collapse: collapse; /* Removes space between borders */
+    margin: 25px 0; /* Margin for top and bottom */
+    font-size: 0.9em; /* Smaller text size */
     min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 5px 5px 0 0;
+    overflow: hidden; /* Helps contain the inner elements */
+    box-shadow: 0 0 20px rgba(0,0,0,0.15); /* Subtle shadow around table */
 }
 
 .styled-table thead tr {
-    background-color: #009879;
+    background-color: #009879; /* A pleasing teal background */
     color: #ffffff;
     text-align: left;
+    font-weight: bold;
 }
 
-.styled-table th,
-.styled-table td {
+.styled-table th, .styled-table td {
     padding: 12px 15px;
 }
 
 .styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd; /* Light grey border for each row */
 }
 
 .styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+    background-color: #f3f3f3; /* Zebra striping for rows */
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #009879; /* Thicker teal border for last row */
 }
 
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #009879;
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1; /* Light grey background on row hover */
 }
 
-.tb-row {
-    background-color: #f3f3f3;
+/* Styling for the row interaction buttons */
+.styled-table button {
+    background-color: #009879; /* Matching the header */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.styled-table button:hover {
+    background-color: #007BFF; /* Blue on hover for interaction */
 }
 
 .column-name {
