@@ -32,18 +32,19 @@
                         <table class="styled-table">
                             <thead>
                                 <tr>
-                                    <th class="column-name">Item ID</th>
-                                    <th class="column-name">Item Description</th>
+                                    <th class="column-name">Item</th>
+                                    <th class="column-name">Description</th>
                                     <th class="column-name">Quantity</th>
+                                    <th class="column-name">Days of Use</th>
                                     <th class="column-name"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for item in items %}
-                                <tr class="tb-row">
-                                    <td>{{ item.item_id }}</td>
+                                    <td>{{ item.item_name }}</td>
                                     <td>{{ item.description }}</td>
                                     <td>{{ item.quantity }}</td>
+                                    <td>{{ item.expiry }}</td>
                                     <td>
                                         <button onclick="location.href='/increase-quantity/{{ item.item_id }}'">+</button>
                                         <button onclick="location.href='/decrease-quantity/{{ item.item_id }}'">-</button>

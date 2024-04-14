@@ -9,6 +9,7 @@ from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from dotenv import load_dotenv
+from openai import OpenAI
 
 #-----------------------------------------------------------------------
 Base = sqlalchemy.ext.declarative.declarative_base()
@@ -36,9 +37,10 @@ class Item(Base):
     item_id = Column(sqlalchemy.Integer, primary_key=True, autoincrement=True)
     inventory_id = Column(Integer, ForeignKey('inventory.inventory_id'))
     category_id = Column(Integer, ForeignKey('category.category_id'))
+    item_name = Column(String)
     description = Column(String)
     quantity = Column(Integer)
-
+    expiry = Column(String)
 
 load_dotenv()
 db_user = os.getenv('DB_USER')
@@ -47,6 +49,7 @@ db_host = os.getenv('DB_HOST')
 db_name = os.getenv('DB_NAME')
 
 _engine = sqlalchemy.create_engine(f'postgresql+psycopg2://{db_user}:{db_password}@{db_host}/{db_name}')
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 #-----------------------------------------------------------------------
 # Database get methods
@@ -120,7 +123,7 @@ def retrieveItem(item_id):
             if item is None:
                 return None
             else:
-                return {'item_id': item.item_id, 'inventory_id': item.inventory_id, 'category_id': item.category_id, 'quantity': item.quantity, 'description': item.description}
+                return {'item_id': item.item_id, 'inventory_id': item.inventory_id, 'item_name': item.item_name, 'category_id': item.category_id, 'expiry': item.expiry, 'quantity': item.quantity, 'description': item.description}
     except Exception as ex:
         print('retrieveItem', file=sys.stderr)
         print(ex, file=sys.stderr)
@@ -134,7 +137,7 @@ def retrieveItems(inventory_id):
             if items is None:
                 return None
             else:
-                return [{'item_id': item.item_id, 'inventory_id': item.inventory_id, 'description': item.description, 'quantity': item.quantity} for item in items]
+                return [{'item_id': item.item_id, 'inventory_id': item.inventory_id, 'item_name': item.item_name, 'category_id': item.category_id, 'expiry': item.expiry, 'quantity': item.quantity, 'description': item.description} for item in items]
     except Exception as ex:
         print('retrieveItems', file=sys.stderr)
         print(ex, file=sys.stderr)
@@ -187,7 +190,14 @@ def insertCategory(category_info):
 # insert new item into the item table, returns item_id
 def insertItem(item_info):
     with sqlalchemy.orm.Session(_engine) as session:
-        row = Item(inventory_id=item_info.get('inventory_id'), category_id=item_info.get('category_id'), quantity=item_info.get('quantity'), description=item_info.get('description'))
+        completion = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are estimating the usage lifespan of items."},
+            {"role": "user", "content": "How many days would you predict that it would take someone to run out of the following. Give an exact number of days, and only a single number, no extra text." + item_info.get('description')}
+        ]
+        )
+        row = Item(inventory_id=item_info.get('inventory_id'), category_id=item_info.get('category_id'), quantity=item_info.get('quantity'), description=item_info.get('description'), expiry=completion.choices[0].message.content)
         session.add(row)
         try:
             session.commit()

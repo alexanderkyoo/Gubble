@@ -6,3 +6,4 @@ Jinja2
 Authlib
 gunicorn
 requests
+openai
