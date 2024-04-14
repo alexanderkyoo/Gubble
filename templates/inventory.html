@@ -44,8 +44,8 @@
                                     <td>{{ item.description }}</td>
                                     <td>{{ item.quantity }}</td>
                                     <td>
-                                        <button onclick="location.href='/increase-quantity/{{ item.item_id }}'">Increase</button>
-                                        <button onclick="location.href='/decrease-quantity/{{ item.item_id }}'">Decrease</button>
+                                        <button onclick="location.href='/increase-quantity/{{ item.item_id }}'">+</button>
+                                        <button onclick="location.href='/decrease-quantity/{{ item.item_id }}'">-</button>
                                     </td>
                                 </tr>
                                 {% endfor %}
