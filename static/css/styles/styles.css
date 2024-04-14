@@ -1,4 +1,5 @@
 .login-button {
+    flex-grow: 1;
     display: inline-block;
     background-color: #008CBA; /* Blue background */
     border: none;  /* Remove borders */
