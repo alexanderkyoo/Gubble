@@ -10,11 +10,12 @@
                 <nav>
                     <div class="button-container">
                         <a href="{{ url_for('index') }}" class="login-button">Home</a>
-                        {% if logged_in %}
-                            <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
-                        {% else %}
-                            <a href="{{ url_for('login') }}" class="login-button">Login</a>
-                        {% endif %}
+                    {% if logged_in %}
+                        <a href="{{ url_for('recieptscanner') }}" class="login-button">Reciept Scanner</a>
+                        <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+                    {% endif %}
                     </div>
                 </nav>
                 <title>Inventory Page</title>
