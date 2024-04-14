@@ -106,4 +106,4 @@ def decrease_quantity(item_id):
 
 @app.route('/recieptscanner')
 def recieptscanner():
-    return flask.render_template('recieptscanner.html')
+    return flask.render_template('recieptscanner.html', logged_in=('profile' in flask.session))
