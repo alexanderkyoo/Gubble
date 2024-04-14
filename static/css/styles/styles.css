@@ -136,7 +136,7 @@ div .dot {
 .styled-table thead tr {
     background-color: #009879; /* A pleasing teal background */
     color: #ffffff;
-    text-align: left;
+    text-align: center;
     font-weight: bold;
 }
 
