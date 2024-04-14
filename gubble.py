@@ -73,7 +73,7 @@ def inventory():
     if 'profile' not in flask.session:
         return flask.redirect(flask.url_for('login'))
     items = db.retrieveItems(flask.session['inventory_id'])
-    items.sort()
+    items = sorted(items, key=lambda item: item['item_id'])
     return flask.render_template('inventory.html', logged_in=('profile' in flask.session), items=items)
 
 @app.route('/logout')
