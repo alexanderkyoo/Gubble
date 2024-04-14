@@ -1,3 +1,18 @@
+.login-button {
+    display: inline-block;
+    background-color: #008CBA; /* Blue background */
+    border: none;  /* Remove borders */
+    color: white;  /* White text */
+    padding: 15px 32px;  /* Some padding */
+    text-align: center;  /* Centered text */
+    text-decoration: none;  /* Remove underline */
+    font-size: 16px;  /* Set a font size */
+    margin: 4px 2px;  /* Some margin */
+    cursor: pointer;  /* Mouse pointer on hover */
+}
+.login-button:hover {
+    background-color: RoyalBlue;
+}
 body {
     background-color: var(--sk-body-background-color, #fff);
     color: var(--sk-body-text-color, #1d1d1f);

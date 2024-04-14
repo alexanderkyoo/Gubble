@@ -1,71 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-    <!DOCTYPE html>
-    <html lang="en">
     <head>
-        <meta charset="UTF-8"><nav>
-    <a href="{{ url_for('index') }}" class="login-button">Home</a>
-    {% if logged_in %}
-        <a href="{{ url_for('inventory') }}" class="login-button">Inventory</a>
-        <a href="{{ url_for('recieptscanner') }}" class="login-button">Reciept Scan</a>
-        <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
-    {% else %}
-        <a href="{{ url_for('login') }}" class="login-button">Login</a>
-    {% endif %}
-</nav><style>
-    .login-button {
-        display: inline-block;
-        background-color: #008CBA; /* Blue background */
-        border: none;  /* Remove borders */
-        color: white;  /* White text */
-        padding: 15px 32px;  /* Some padding */
-        text-align: center;  /* Centered text */
-        text-decoration: none;  /* Remove underline */
-        font-size: 16px;  /* Set a font size */
-        margin: 4px 2px;  /* Some margin */
-        cursor: pointer;  /* Mouse pointer on hover */
-    }
-
-    /* Darker background on mouse-over */
-    .login-button:hover {
-        background-color: RoyalBlue;
-    }
-</style>
+        <meta charset="UTF-8">
         <title>Home Page</title>
-        <link rel="stylesheet" type="text/css" href="static/css/styles.css">
-    </head>
-    <body>
-        <header>
-        </header>
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <nav>
+                    <a href="{{ url_for('index') }}" class="login-button">Home</a>
+                    {% if logged_in %}
+                        <a href="{{ url_for('inventory') }}" class="login-button">Inventory</a>
+                        <a href="{{ url_for('recieptscanner') }}" class="login-button">Reciept Scan</a>
+                        <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+                    {% endif %}
+                </nav>
+                <title>Home Page</title>
+                <link rel="stylesheet" type="text/css" href="static/css/styles.css">
+            </head>
+            <body>
+                <main>
+                    <div class="wrapper">
+                        <h1>GUBBLE</h1>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                        <div><span class="dot"></span></div>
+                    </div>
+                </main>
 
-        <main>
-            <!-- Display the user data if it's available -->
-</head>
-<body>
-    <main>
-        <div class="wrapper">
-            <h1>GUBBLE</h1>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-            <div><span class="dot"></span></div>
-          </div>
-    </main>
-
-</body>
+            </body>
 </html>
 
