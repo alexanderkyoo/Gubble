@@ -237,6 +237,16 @@ def update_quantity(item_id, dir):
             session.commit()
         else:
             print(f"Item with id {item_id} not found", file=sys.stderr)
+
+
+def delete_item(item_id):
+    with sqlalchemy.orm.Session(_engine) as session:
+        item = session.query(Item).filter(Item.item_id == item_id).first()
+        if item:
+            session.delete(item)
+            session.commit()
+        else:
+            print(f"Item with id {item_id} not found", file=sys.stderr)
 #-----------------------------------------------------------------------
 # Reset functions, run these to clear tables 
 

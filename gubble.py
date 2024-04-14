@@ -111,3 +111,9 @@ def recieptscanner():
     if 'profile' not in flask.session:
         return flask.redirect(flask.url_for('login'))
     return flask.render_template('recieptscanner.html', logged_in=('profile' in flask.session))
+
+@app.route('/delete/<int:item_id>', methods=['GET'])
+def delete_item(item_id):
+    # Assuming you have a function `delete_item` in your database handler
+    db.delete_item(item_id)
+    return flask.redirect(flask.url_for('inventory'))
