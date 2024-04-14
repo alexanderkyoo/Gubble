@@ -6,62 +6,26 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8"><nav>
-    <a href="{{ url_for('index') }}" class="login-button">Home</a>
-            {% if logged_in %}
-                <a href="{{ url_for('inventory') }}" class="login-button">Inventory</a>
-                <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
-            {% else %}
-                <a href="{{ url_for('login') }}" class="login-button">Login</a>
-            {% endif %}
-</nav><style>
-    .login-button {
-        display: inline-block;
-        background-color: #008CBA; /* Blue background */
-        border: none;  /* Remove borders */
-        color: white;  /* White text */
-        padding: 15px 32px;  /* Some padding */
-        text-align: center;  /* Centered text */
-        text-decoration: none;  /* Remove underline */
-        font-size: 16px; 
-        margin: 4px 2px; 
-        cursor: pointer;
-    }
-
-    .login-button:hover {
-        background-color: RoyalBlue;
-    }
-</style>
+        <meta charset="UTF-8">
+            <nav>
+                <div class="button-container">
+                    <a href="{{ url_for('index') }}" class="login-button">Home</a>
+                    {% if logged_in %}
+                        <a href="{{ url_for('inventory') }}" class="login-button">Inventory</a>
+                        <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+                    {% else %}
+                        <a href="{{ url_for('login') }}" class="login-button">Login</a>
+                    {% endif %}
+                </div>
+            </nav>
         <title>Reciept Page</title>
-        <style>
-            body {
-                background-color: var(--sk-body-background-color, #fff);
-                color: var(--sk-body-text-color, #1d1d1f);
-                font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                font-size: 17px;
-                font-style: normal;
-                font-weight: 400;
-                letter-spacing: -0.022em;
-                line-height: 1.47059;
-            }
-        </style>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="../static/css/styles/styles.css">   
     </head>
+
     <body>
-
-        <main>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Reciept Scanner Coming Soon!</h1>
-        <button onclick="location.href='/add-item'">Add Item</button>
-    </header>
-
-    <main>
-
-    </main>
-
-</body>
+        <header>
+            <h1>Reciept Scanner Coming Soon!</h1>
+        </header>
+    </body>
 </html>
 
