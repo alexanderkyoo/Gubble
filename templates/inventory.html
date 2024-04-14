@@ -1,87 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Inventory Page</title>
-    <!DOCTYPE html>
-    <html lang="en">
     <head>
-        <meta charset="UTF-8"><nav>
-    <a href="{{ url_for('index') }}" class="login-button">Home</a>
-            {% if logged_in %}
-                <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
-            {% else %}
-                <a href="{{ url_for('login') }}" class="login-button">Login</a>
-            {% endif %}
-</nav><style>
-    .login-button {
-        display: inline-block;
-        background-color: #008CBA; /* Blue background */
-        border: none;  /* Remove borders */
-        color: white;  /* White text */
-        padding: 15px 32px;  /* Some padding */
-        text-align: center;  /* Centered text */
-        text-decoration: none;  /* Remove underline */
-        font-size: 16px; 
-        margin: 4px 2px; 
-        cursor: pointer;
-    }
+        <meta charset="UTF-8">
+        <title>Inventory Page</title>
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <nav>
+                    <div class="button-container">
+                        <a href="{{ url_for('index') }}" class="login-button">Home</a>
+                        {% if logged_in %}
+                            <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="login-button">Login</a>
+                        {% endif %}
+                    </div>
+                </nav>
+                <title>Inventory Page</title>
+                <link rel="stylesheet" type="text/css" href="../static/css/styles/styles.css">
+            </head>
+            <body>
+                <header>
+                    <h1>Inventory</h1>
+                    <button onclick="location.href='/add-item'">Add Item</button>
+                </header>
 
-    .login-button:hover {
-        background-color: RoyalBlue;
-    }
-</style>
-        <title>Home Page</title>
-        <style>
-            body {
-                background-color: var(--sk-body-background-color, #fff);
-                color: var(--sk-body-text-color, #1d1d1f);
-                font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
-                font-size: 17px;
-                font-style: normal;
-                font-weight: 400;
-                letter-spacing: -0.022em;
-                line-height: 1.47059;
-            }
-        </style>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
-    </head>
-    <body>
+                <main>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Item ID</th>
+                                <th>Item Description</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr>
+                                <td>{{ item.item_id }}</td>
+                                <td>{{ item.description }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>
+                                    <button onclick="location.href='/increase-quantity/{{ item.item_id }}'">Increase</button>
+                                    <button onclick="location.href='/decrease-quantity/{{ item.item_id }}'">Decrease</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </main>
 
-        <main>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Inventory</h1>
-        <button onclick="location.href='/add-item'">Add Item</button>
-    </header>
-
-    <main>
-        <table>
-            <thead>
-                <tr>
-                    <th>Item ID</th>
-                    <th>Item Description</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in items %}
-                <tr>
-                    <td>{{ item.item_id }}</td>
-                    <td>{{ item.description }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>
-                        <button onclick="location.href='/increase-quantity/{{ item.item_id }}'">Increase</button>
-                        <button onclick="location.href='/decrease-quantity/{{ item.item_id }}'">Decrease</button>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </main>
-
-</body>
+            </body>
 </html>
 
