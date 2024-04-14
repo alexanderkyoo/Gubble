@@ -70,7 +70,8 @@ def login():
 
 @app.route('/inventory')
 def inventory():
-    print(flask.session['inventory_id'])
+    if 'profile' not in flask.session:
+        return flask.redirect(flask.url_for('login'))
     items = db.retrieveItems(flask.session['inventory_id'])
     return flask.render_template('inventory.html', logged_in=('profile' in flask.session), items=items)
 
@@ -106,4 +107,6 @@ def decrease_quantity(item_id):
 
 @app.route('/recieptscanner')
 def recieptscanner():
+    if 'profile' not in flask.session:
+        return flask.redirect(flask.url_for('login'))
     return flask.render_template('recieptscanner.html', logged_in=('profile' in flask.session))
