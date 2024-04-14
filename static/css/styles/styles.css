@@ -160,7 +160,7 @@ div .dot {
 }
 
 .styled-table tbody tr:hover {
-    background-color: #f1f1f1; /* Light grey background on row hover */
+    background-color: #c5c5c5; /* Light grey background on row hover */
 }
 
 /* Styling for the row interaction buttons */
