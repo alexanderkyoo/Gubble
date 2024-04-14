@@ -122,8 +122,8 @@ div .dot {
 }
 
 .styled-table {
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
