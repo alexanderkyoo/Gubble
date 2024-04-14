@@ -1,3 +1,7 @@
+.button-container {
+    display: flex;
+    justify-content: space-around;
+}
 .login-button {
     flex-grow: 1;
     display: inline-block;

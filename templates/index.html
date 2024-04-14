@@ -8,14 +8,16 @@
             <head>
                 <meta charset="UTF-8">
                 <nav>
-                    <a href="{{ url_for('index') }}" class="login-button">Home</a>
-                    {% if logged_in %}
-                        <a href="{{ url_for('inventory') }}" class="login-button">Inventory</a>
-                        <a href="{{ url_for('recieptscanner') }}" class="login-button">Reciept Scan</a>
-                        <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
-                    {% else %}
-                        <a href="{{ url_for('login') }}" class="login-button">Login</a>
-                    {% endif %}
+                    <div class="button-container">
+                        <a href="{{ url_for('index') }}" class="login-button">Home</a>
+                        {% if logged_in %}
+                            <a href="{{ url_for('inventory') }}" class="login-button">Inventory</a>
+                            <a href="{{ url_for('recieptscanner') }}" class="login-button">Reciept Scan</a>
+                            <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="login-button">Login</a>
+                        {% endif %}
+                    </div>
                 </nav>
                 <title>Home Page</title>
                 <link rel="stylesheet" type="text/css" href="../static/css/styles/styles.css">
@@ -24,7 +26,6 @@
                 <main>
                     <div class="wrapper">
                         <h1>GUBBLE</h1>
-                        <div><span class="dot"></span></div>
                         <div><span class="dot"></span></div>
                         <div><span class="dot"></span></div>
                         <div><span class="dot"></span></div>
