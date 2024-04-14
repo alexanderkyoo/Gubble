@@ -38,7 +38,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
-    font-family: sans-serif;
+    font-family: verdana;
     letter-spacing: 1px;
     word-spacing: 2px;
     color: #fff;
