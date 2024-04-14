@@ -86,6 +86,7 @@ def logout():
 def add_item():
     if flask.request.method == 'POST':
         item_info = {
+            'item_name': flask.request.form.get('item_name'),
             'inventory_id': flask.session['inventory_id'],
             'category_id': flask.request.form.get('category_id'),
             'description': flask.request.form.get('description'),
