@@ -27,7 +27,7 @@
 .wrapper {
     height: 93%;
     width: 100%;
-    background:  #53b5fc;
+    background: linear-gradient(180deg, #02c1e3, 5%, #119dff, 50%, #030423);
     position: absolute;
 }
 .wrapper h1 {

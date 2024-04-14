@@ -27,28 +27,30 @@
                 </header>
 
                 <main>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Item ID</th>
-                                <th>Item Description</th>
-                                <th>Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for item in items %}
-                            <tr>
-                                <td>{{ item.item_id }}</td>
-                                <td>{{ item.description }}</td>
-                                <td>{{ item.quantity }}</td>
-                                <td>
-                                    <button onclick="location.href='/increase-quantity/{{ item.item_id }}'">Increase</button>
-                                    <button onclick="location.href='/decrease-quantity/{{ item.item_id }}'">Decrease</button>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                    <div class="wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Item ID</th>
+                                    <th>Item Description</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in items %}
+                                <tr>
+                                    <td>{{ item.item_id }}</td>
+                                    <td>{{ item.description }}</td>
+                                    <td>{{ item.quantity }}</td>
+                                    <td>
+                                        <button onclick="location.href='/increase-quantity/{{ item.item_id }}'">Increase</button>
+                                        <button onclick="location.href='/decrease-quantity/{{ item.item_id }}'">Decrease</button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </main>
 
             </body>
