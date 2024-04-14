@@ -1,8 +1,12 @@
 {
-  "name": "Purchase Tracker",
+  "name": "Gubble Extension",
   "version": "1.0",
   "manifest_version": 3,
   "description": "A simple extension to track your online purchases",
+  "oauth2": {
+    "client_id": "klnldgenohnbnfddnccjehnhmnbfkchp.apps.googleusercontent.com",
+    "scopes": ["openid", "email", "profile"]
+  },
   "background": {
     "service_worker": "service-worker.js"
   },
@@ -11,11 +15,6 @@
     "128": "images/icon-128.png"
   },
   "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "images/icon-16.png",
-      "128": "images/icon-128.png"
-    }
-  },
-  "permissions": ["alarms", "notifications", "storage", "tabs"]
+    "default_popup": "popup.html"
+  }
 }
