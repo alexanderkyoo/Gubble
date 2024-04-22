@@ -47,7 +47,6 @@ db_user = os.getenv('DB_USER')
 db_password = os.getenv('DB_PASSWORD')
 db_host = os.getenv('DB_HOST')
 db_name = os.getenv('DB_NAME')
-
 _engine = sqlalchemy.create_engine(f'postgresql+psycopg2://{db_user}:{db_password}@{db_host}/{db_name}')
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -276,9 +275,7 @@ def clear_all_tables():
 
 if __name__ == '__main__':
     #clear_all_tables()
-    print(_engine)
-    print(db_password)
-    print(retrieveAllUsers())
+    print(retrieveItems(1))
     #print(insertItem({"inventory_id": 2, "category_id": 6, "quantity": 12, 'description': "lettuce"}))
     #print(retrieveAllUsers())
     #print(insertFinData(3))

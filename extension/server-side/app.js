@@ -1,11 +1,20 @@
 const express = require('express');
 const cors = require('cors');
+const fs = require('fs');
 const { spawn } = require('child_process');
 const app = express();
 const port = 3000;
 
 app.get('/get-data', (req, res) => {
-    const python = spawn('python3', ['.../dbext.py']);
+    const scriptPath = '../../dbext.py';
+
+    // Check if the file exists
+    if (!fs.existsSync(scriptPath)) {
+        console.error('Python script not found at path:', scriptPath);
+        return;
+    }
+
+    const python = spawn('python3', [scriptPath, '1']);
     let dataToSend;
 
     python.stdout.on('data', (data) => {
