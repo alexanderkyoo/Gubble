@@ -276,7 +276,10 @@ def clear_all_tables():
 
 if __name__ == '__main__':
     #clear_all_tables()
-    #print(retrieveAllRequests())
-    print(insertItem({"inventory_id": 2, "category_id": 6, "quantity": 12, 'description': "lettuce"}))
+    print(_engine)
+    print(db_password)
+    print(retrieveAllUsers())
+    #print(insertItem({"inventory_id": 2, "category_id": 6, "quantity": 12, 'description': "lettuce"}))
     #print(retrieveAllUsers())
     #print(insertFinData(3))
+    #print('hello world')

@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 app.get('/get-data', (req, res) => {
-    const python = spawn('python3', ['.../db.py']);
+    const python = spawn('python3', ['.../dbext.py']);
     let dataToSend;
 
     python.stdout.on('data', (data) => {
