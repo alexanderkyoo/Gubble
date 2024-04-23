@@ -79,7 +79,7 @@ def inventory():
         if cat is None:
             item['category'] = 'None'
         else:
-            item['category'] = db.retrieveCategory(item['category_id'])['category_descrip']
+            item['category'] = db.retrieveCategory(item['category_id'])['descrip']
     return flask.render_template('inventory.html', logged_in=('profile' in flask.session), items=items)
 
 @app.route('/logout')
