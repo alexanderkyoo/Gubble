@@ -7,6 +7,7 @@ const port = 3000;
 
 app.get('/get-data', (req, res) => {
     const scriptPath = '../../dbext.py';
+    const id = req.query.id;
 
     // Check if the file exists
     if (!fs.existsSync(scriptPath)) {
@@ -14,7 +15,7 @@ app.get('/get-data', (req, res) => {
         return;
     }
 
-    const python = spawn('python3', [scriptPath, '1']);
+    const python = spawn('python3', [scriptPath, id]);
     let dataToSend;
 
     python.stdout.on('data', (data) => {

@@ -20,3 +20,4 @@ chrome.action.onClicked.addListener((tab) => {
     height: 1200
   });
 });
+
