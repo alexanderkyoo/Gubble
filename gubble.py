@@ -91,7 +91,7 @@ def add_item():
         item_name = flask.request.form.get('item_name')
         cat_id = db.retrieveOrInsertCategory(cat, item_name)
         item_info = {
-            'item_name': flask.request.form.get('item_name'),
+            'item_name': item_name,
             'inventory_id': flask.session['inventory_id'],
             'category_id': cat_id,
             'description': flask.request.form.get('description'),

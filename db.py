@@ -153,7 +153,7 @@ def retrieveOrInsertCategory(category_descrip, item_name):
                         {"role": "user", "content": "Generate the name of a broad home good category that this item might be in." + "item_name"}
                     ]
                 )
-            query = session.query(Category).filter(Category.description == category_descrip)
+            query = session.query(Category).filter(Category.descrip == category_descrip)
             category = query.first()
 
             if category is not None:
