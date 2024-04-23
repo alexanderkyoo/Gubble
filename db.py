@@ -157,7 +157,7 @@ def retrieveOrInsertCategory(category_descrip, item_name):
             category = query.first()
 
             if category is not None:
-                return category.id
+                return category.category_id
             else:
                 # If the category doesn't exist, create a new one
                 new_category = Category(descrip=category_descrip)
