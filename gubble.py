@@ -74,6 +74,8 @@ def inventory():
         return flask.redirect(flask.url_for('login'))
     items = db.retrieveItems(flask.session['inventory_id'])
     items = sorted(items, key=lambda item: item['item_id'])
+    for item in items:
+        item['category'] = db.retrieveCategory(item['category_id'])[0]['category_descrip']
     return flask.render_template('inventory.html', logged_in=('profile' in flask.session), items=items)
 
 @app.route('/logout')
