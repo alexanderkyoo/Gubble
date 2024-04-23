@@ -160,7 +160,7 @@ def retrieveOrInsertCategory(category_descrip, item_name):
                 return category.id
             else:
                 # If the category doesn't exist, create a new one
-                new_category = Category(description=category_descrip)
+                new_category = Category(descrip=category_descrip)
                 session.add(new_category)
                 session.commit()
 
