@@ -145,7 +145,7 @@ def retrieveItems(inventory_id):
 def retrieveOrInsertCategory(category_descrip, item_name):
     try:
         with sqlalchemy.orm.Session(_engine) as session:
-            if category_descrip is '':
+            if category_descrip == '':
                 completion = client.chat.completions.create(
                     model="gpt-3.5-turbo",
                     messages=[
