@@ -75,7 +75,11 @@ def inventory():
     items = db.retrieveItems(flask.session['inventory_id'])
     items = sorted(items, key=lambda item: item['item_id'])
     for item in items:
-        item['category'] = db.retrieveCategory(item['category_id'])['category_descrip']
+        cat = db.retrieveCategory(item['category_id'])
+        if cat is None:
+            item['category'] = 'None'
+        else:
+            item['category'] = db.retrieveCategory(item['category_id'])['category_descrip']
     return flask.render_template('inventory.html', logged_in=('profile' in flask.session), items=items)
 
 @app.route('/logout')
