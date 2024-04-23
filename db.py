@@ -141,7 +141,35 @@ def retrieveItems(inventory_id):
         print('retrieveItems', file=sys.stderr)
         print(ex, file=sys.stderr)
         return ex
-    
+
+def retrieveOrInsertCategory(category_descrip, item_name):
+    try:
+        with sqlalchemy.orm.Session(_engine) as session:
+            if category_descrip is '':
+                completion = client.chat.completions.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": "You are generating a simple category name for this item"},
+                        {"role": "user", "content": "Generate the name of a broad home good category that this item might be in." + "item_name"}
+                    ]
+                )
+            query = session.query(Category).filter(Category.description == category_descrip)
+            category = query.first()
+
+            if category is not None:
+                return category.id
+            else:
+                # If the category doesn't exist, create a new one
+                new_category = Category(description=category_descrip)
+                session.add(new_category)
+                session.commit()
+
+                # Return the id of the new category
+                return new_category.id
+    except Exception as ex:
+        print('retrieveOrInsertCategory', file=sys.stderr)
+        print(ex, file=sys.stderr)
+        return ex
 #-----------------------------------------------------------------------
 # insert/update functions
 

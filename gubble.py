@@ -85,10 +85,13 @@ def logout():
 @app.route('/add-item', methods=['GET', 'POST'])
 def add_item():
     if flask.request.method == 'POST':
+        cat = flask.request.form.get('category_descrip')
+        item_name = flask.request.form.get('item_name')
+        cat_id = db.retrieveOrInsertCategory(cat, item_name)
         item_info = {
             'item_name': flask.request.form.get('item_name'),
             'inventory_id': flask.session['inventory_id'],
-            'category_id': flask.request.form.get('category_id'),
+            'category_id': cat_id,
             'description': flask.request.form.get('description'),
             'quantity': flask.request.form.get('quantity')
         }
