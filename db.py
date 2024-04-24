@@ -154,6 +154,7 @@ def retrieveOrInsertCategory(category_descrip, item_name):
                         {"role": "user", "content": "Generate the name of a broad home good category that this item might be in: " + item_name}
                     ]
                 )
+                category_descrip = completion.choices[0].message.content
             query = session.query(Category).filter(Category.descrip == category_descrip)
             category = query.first()
 
