@@ -150,7 +150,7 @@ def retrieveOrInsertCategory(category_descrip, item_name):
                     model="gpt-3.5-turbo",
                     messages=[
                         {"role": "system", "content": "You are generating a simple category name for this item"},
-                        {"role": "user", "content": "Generate the name of a broad home good category that this item might be in." + "item_name"}
+                        {"role": "user", "content": "Generate the name of a broad home good category that this item might be in: " + item_name}
                     ]
                 )
             query = session.query(Category).filter(Category.descrip == category_descrip)
@@ -160,12 +160,8 @@ def retrieveOrInsertCategory(category_descrip, item_name):
                 return category.category_id
             else:
                 # If the category doesn't exist, create a new one
-                new_category = Category(descrip=category_descrip)
-                session.add(new_category)
-                session.commit()
-
-                # Return the id of the new category
-                return new_category.id
+                return insertCategory({'descrip': category_descrip})
+            
     except Exception as ex:
         print('retrieveOrInsertCategory', file=sys.stderr)
         print(ex, file=sys.stderr)
@@ -204,7 +200,7 @@ def insertInventory(inventory_info):
 # insert new category into the category table, returns category_id
 def insertCategory(category_info):
     with sqlalchemy.orm.Session(_engine) as session:
-        row = Category(category_id=category_info.get('category_id'), descrip=category_info.get('descrip'))
+        row = Category(descrip=category_info.get('descrip'))
         session.add(row)
         try:
             session.commit()
