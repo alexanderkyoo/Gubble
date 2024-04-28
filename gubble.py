@@ -116,7 +116,7 @@ def decrease_quantity(item_id):
     db.update_quantity(item_id, -1)
     return flask.redirect(flask.url_for('inventory'))
 
-@app.route('/recieptscanner')
+@app.route('/recieptscanner', methods=['GET', 'POST'])
 def recieptscanner():
     if flask.request.method == 'POST':
         photo = flask.request.files['photo']
