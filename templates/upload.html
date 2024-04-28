@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Upload Photo</title>
+    <head>
+        <meta charset="UTF-8">
+        <nav>
+            <div class="button-container">
+                <a href="{{ url_for('index') }}" class="login-button">Home</a>
+            {% if logged_in %}
+                <a href="{{ url_for('inventory') }}" class="login-button">Inventory</a>
+                <a href="{{ url_for('logout') }}" class="login-button">Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="login-button">Login</a>
+            {% endif %}
+            </div>
+        </nav>
+        <title>Reciept Scanner</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/styles/styles.css">
+    </head>
 </head>
 <body>
-    <link rel="stylesheet" type="text/css" href="../static/css/styles/styles.css">
     <h1>Upload Photo</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="photo" accept="image/*">
-        <input type="submit" value="Upload">
-    </form>
+    <div class="wrapper">
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="photo" accept="image/*">
+            <input type="submit" value="Upload">
+        </form>
+    </div>
 </body>
 </html>
