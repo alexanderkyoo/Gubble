@@ -3,9 +3,9 @@ FROM python:3.9
 RUN apt-get update && \
     apt-get -qq -y install tesseract-ocr && \
     apt-get -qq -y install libtesseract-dev
-    
+
 # Set the working directory
-WORKDIR /app
+WORKDIR /gubble
 
 # Copy the requirements file and install dependencies
 COPY requirements.txt .
