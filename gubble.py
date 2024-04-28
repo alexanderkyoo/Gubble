@@ -118,23 +118,16 @@ def decrease_quantity(item_id):
 
 @app.route('/recieptscanner')
 def recieptscanner():
-    if 'profile' not in flask.session:
-        return flask.redirect(flask.url_for('login'))
-    return flask.render_template('recieptscanner.html', logged_in=('profile' in flask.session))
+    if flask.request.method == 'POST':
+        photo = flask.request.files['photo']
+        photo_data = io.BytesIO(photo.read())
+        text = reciept.parse_text_from_image(photo_data)
+        print(text)
+        return flask.redirect(flask.url_for('inventory'))
+    return flask.render_template('upload.html')
 
 @app.route('/delete/<int:item_id>', methods=['GET'])
 def delete_item(item_id):
     db.delete_item(item_id)
     return flask.redirect(flask.url_for('inventory'))
 
-from reciept import parse_text_from_image
-
-@app.route('/upload', methods=['GET', 'POST'])
-def upload():
-    if flask.request.method == 'POST':
-        photo = flask.request.files['photo']
-        photo_data = io.BytesIO(photo.read())
-        text = parse_text_from_image(photo_data)
-        #print(text)
-        return flask.redirect(flask.url_for('inventory'))
-    return flask.render_template('upload.html')
