@@ -37,4 +37,5 @@ def analyze_text(text):
 
 if __name__ == '__main__':
     #print(parse_text_from_image('reciept.png'))
-    print(analyze_text(parse_text_from_image('reciept.png')))
+    print("why is this running multiple times")
+    #print(analyze_text(parse_text_from_image('reciept.png')))
