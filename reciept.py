@@ -35,5 +35,6 @@ def analyze_text(text):
     )
     return completion.choices[0].message.content
 
-#print(parse_text_from_image('reciept.png'))
-print(analyze_text(parse_text_from_image('reciept.png')))
+if __name__ == '__main__':
+    #print(parse_text_from_image('reciept.png'))
+    print(analyze_text(parse_text_from_image('reciept.png')))

@@ -135,6 +135,6 @@ def upload():
         photo = flask.request.files['photo']
         photo_data = io.BytesIO(photo.read())
         text = parse_text_from_image(photo_data)
-        print(text)
+        #print(text)
         return flask.redirect(flask.url_for('inventory'))
     return flask.render_template('upload.html')
