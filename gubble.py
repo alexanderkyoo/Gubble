@@ -122,18 +122,19 @@ def recieptscanner():
         photo = flask.request.files['photo']
         photo_data = io.BytesIO(photo.read())
         text = reciept.parse_text_from_image(photo_data)
-        standardized_text = reciept.analyze_text(text)
-        items = standardized_text.split('\n')
-        for item in items:
-            item_info = {
-                'item_name': item.split(',')[0].split(': ')[1],
-                'inventory_id': flask.session['inventory_id'],
-                'category_id': db.retrieveOrInsertCategory('', item.split(',')[0].split(': ')[1]),
-                'description': '',
-                'quantity': item.split(',')[1].split(': ')[1]
-            }
-            db.insertItem(item_info)
-        return flask.redirect(flask.url_for('inventory'))
+        if text != '':
+            standardized_text = reciept.analyze_text(text)
+            items = standardized_text.split('\n')
+            for item in items:
+                item_info = {
+                    'item_name': item.split(',')[0].split(': ')[1],
+                    'inventory_id': flask.session['inventory_id'],
+                    'category_id': db.retrieveOrInsertCategory('', item.split(',')[0].split(': ')[1]),
+                    'description': '',
+                    'quantity': item.split(',')[1].split(': ')[1]
+                }
+                db.insertItem(item_info)
+        return flask.redirect(flask.url_for('inventory')) 
     return flask.render_template('upload.html', logged_in=('profile' in flask.session))
 
 @app.route('/delete/<int:item_id>', methods=['GET'])

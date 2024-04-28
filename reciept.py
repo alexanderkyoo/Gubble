@@ -17,11 +17,8 @@ def parse_text_from_image(image_path):
     img = img.convert('L')
     enhancer = ImageEnhance.Contrast(img)
     img = enhancer.enhance(2)
-    # Apply a threshold to the image
     img = img.point(lambda x: 0 if x < 128 else 255)
-    # Resize the image to make the text larger
     img = img.resize((img.width * 2, img.height * 2))
-    # Use Tesseract to do OCR on the image
     text = pytesseract.image_to_string(img)
     return text
 
