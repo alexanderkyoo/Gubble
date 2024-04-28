@@ -20,6 +20,7 @@ def parse_text_from_image(image_path):
     img = img.point(lambda x: 0 if x < 128 else 255)
     img = img.resize((img.width * 2, img.height * 2))
     text = pytesseract.image_to_string(img)
+    print(text)
     return text
 
 def analyze_text(text):
