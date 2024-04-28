@@ -5,7 +5,7 @@ RUN apt-get update && \
     apt-get -qq -y install libtesseract-dev
 
 # Set the working directory
-WORKDIR /gubble
+WORKDIR /Gubble
 
 # Copy the requirements file and install dependencies
 COPY requirements.txt .
@@ -18,8 +18,7 @@ COPY . .
 EXPOSE 5000
 
 # Set environment variables
-ENV FLASK_ENV=production
-ENV FLASK_APP=app.py
+# ...
 
-# Command to start the Flask application
-CMD ["flask", "run", "--host=0.0.0.0"]
+# Run the application
+CMD ["python", "gubble.py"]
