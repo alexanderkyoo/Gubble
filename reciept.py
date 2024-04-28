@@ -27,7 +27,7 @@ def analyze_text(text):
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are standardizing the text from a receipt."},
-            {"role": "user", "content": "Standardize the following text, using the following format Item: [item_name], Quantity: [quantity], ignoring pricing information, focusing only on item name and quantity: " + text}
+            {"role": "user", "content": "Standardize the following text, using the following format Item: [item_name, type: string], Quantity: [quantity, type: int], ignoring pricing information, focusing only on item name and quantity: " + text}
         ]
     )
     return completion.choices[0].message.content
