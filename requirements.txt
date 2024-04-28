@@ -7,4 +7,5 @@ Authlib
 gunicorn
 requests
 openai
-pytesseract pillow
+pytesseract
+pillow

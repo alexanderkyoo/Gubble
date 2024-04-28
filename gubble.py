@@ -80,7 +80,6 @@ def inventory():
             item['category'] = 'None'
         else:
             item['category'] = db.retrieveCategory(item['category_id'])['descrip']
-    print(items)
     return flask.render_template('inventory.html', logged_in=('profile' in flask.session), items=items)
 
 @app.route('/logout')
@@ -125,7 +124,6 @@ def recieptscanner():
 
 @app.route('/delete/<int:item_id>', methods=['GET'])
 def delete_item(item_id):
-    # Assuming you have a function `delete_item` in your database handler
     db.delete_item(item_id)
     return flask.redirect(flask.url_for('inventory'))
 
