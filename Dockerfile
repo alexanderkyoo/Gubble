@@ -21,4 +21,4 @@ EXPOSE 10000
 # ENV FLASK_ENV=production
 
 # Run the Flask application
-CMD ["gunicorn", "--bind", "0.0.0.0:10000", "gubble.app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:10000", "runserver:main"]
