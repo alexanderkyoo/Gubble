@@ -43,16 +43,7 @@
     font-weight: 888;
     text-transform: uppercase;
 }
-.wrapper div {
-    height: 60px;
-    width: 60px;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    border-radius: 50px;
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    animation: 4s linear infinite;
-}
+
 
 /* Table styling */
 .styled-table {
