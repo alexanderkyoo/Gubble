@@ -5,17 +5,19 @@ RUN apt-get update && \
     apt-get -qq -y install libtesseract-dev
 
 # Set the working directory
-WORKDIR /Gubble
+WORKDIR /app
+
+ADD . /app
 
 # Copy the requirements file and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code to the container
-COPY . .
+#COPY . .
 
 # Expose the port that the Flask app runs on
-#EXPOSE 10000
+EXPOSE 10000
 
 # Set environment variables
 # ...
