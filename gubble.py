@@ -3,8 +3,8 @@ import sys
 import os
 from dotenv import load_dotenv
 import flask
-import json
-import html
+import reciept
+import io
 import db
 from authlib.integrations.flask_client import OAuth
 from authlib.jose.errors import InvalidClaimError
@@ -128,3 +128,15 @@ def delete_item(item_id):
     # Assuming you have a function `delete_item` in your database handler
     db.delete_item(item_id)
     return flask.redirect(flask.url_for('inventory'))
+
+from reciept import parse_text_from_image
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if flask.request.method == 'POST':
+        photo = flask.request.files['photo']
+        photo_data = io.BytesIO(photo.read())
+        text = parse_text_from_image(photo_data)
+        print(text)
+        return flask.redirect(flask.url_for('inventory'))
+    return flask.render_template('upload.html')

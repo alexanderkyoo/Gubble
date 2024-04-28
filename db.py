@@ -128,6 +128,7 @@ def retrieveItem(item_id):
         print(ex, file=sys.stderr)
         return ex
     
+    
 def retrieveItems(inventory_id):
     try:
         with sqlalchemy.orm.Session(_engine) as session:
@@ -232,7 +233,6 @@ def insertItem(item_info):
             session.rollback()
             return False
 
-
 def get_or_create_user(email, name):
     try:
         with sqlalchemy.orm.Session(_engine) as session:
@@ -272,7 +272,6 @@ def update_quantity(item_id, dir):
             session.commit()
         else:
             print(f"Item with id {item_id} not found", file=sys.stderr)
-
 
 def delete_item(item_id):
     with sqlalchemy.orm.Session(_engine) as session:
