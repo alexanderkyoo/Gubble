@@ -20,7 +20,7 @@ def parse_text_from_image(image_path):
     img = img.point(lambda x: 0 if x < 128 else 255)
     img = img.resize((img.width * 2, img.height * 2))
     text = pytesseract.image_to_string(img)
-    print(text)
+    #print(text)
     return text
 
 def analyze_text(text):
@@ -28,12 +28,14 @@ def analyze_text(text):
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are standardizing the text from a receipt."},
-            {"role": "user", "content": "Standardize the following text, using the following format Item: [item_name, type: string], Quantity: [quantity, type: int], ignoring pricing information, focusing only on item name and quantity: " + text}
+            {"role": "user", "content": "Standardize the following text, using the following format Item: [item_name, type: string], Quantity: [quantity, type: int], ignoring pricing information, focusing only on item name and quantity. Ignore any item name that sounds like gibberish " + text}
         ]
     )
     return completion.choices[0].message.content
 
 if __name__ == '__main__':
-    #print(parse_text_from_image('reciept.png'))
-    print("why is this running multiple times")
-    #print(analyze_text(parse_text_from_image('reciept.png')))
+    text = parse_text_from_image('IMG_5610.png')
+    print(text)
+
+    #print("why is this running multiple times")
+    #print(analyze_text(text))
