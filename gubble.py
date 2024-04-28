@@ -134,7 +134,7 @@ def recieptscanner():
             }
             db.insertItem(item_info)
         return flask.redirect(flask.url_for('inventory'))
-    return flask.render_template('upload.html')
+    return flask.render_template('upload.html', logged_in=('profile' in flask.session))
 
 @app.route('/delete/<int:item_id>', methods=['GET'])
 def delete_item(item_id):
