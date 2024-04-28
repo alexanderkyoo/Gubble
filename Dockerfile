@@ -21,4 +21,4 @@ EXPOSE 10000
 # ENV FLASK_ENV=production
 
 # Run the Flask application
-CMD ["python", "gubble.py"]
+CMD ["python", "runserver.py", "10000"]

@@ -1,11 +1,5 @@
 #!/usr/bin/env python
 
-#-----------------------------------------------------------------------
-# runserver.py
-# Author: Boaz Yoo, Louis Larsen, David Oke, Alex Yoo
-#-----------------------------------------------------------------------
-
-
 import sys
 import argparse
 import os
@@ -18,10 +12,12 @@ def parse_args():
         description='Gubble server', 
         allow_abbrev=False)
 
+    default_port = 5000
     parser.add_argument('port',
                         type=int,
-                        help='the port at which the server ' +
-                        'should listen')
+                        default=default_port,
+                        nargs='?',
+                        help='the port at which the server should listen')
     return parser
 
 
