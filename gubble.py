@@ -125,6 +125,7 @@ def recieptscanner():
         print(text)
         if text != '':
             standardized_text = reciept.analyze_text(text)
+            print(standardized_text)
             items = standardized_text.split('\n')
             for item in items:
                 item_info = {
