@@ -8,8 +8,6 @@ const port = 3000;
 app.get('/get-data', (req, res) => {
     const scriptPath = '../../dbext.py';
     const id = req.query.id;
-
-    // Check if the file exists
     if (!fs.existsSync(scriptPath)) {
         console.error('Python script not found at path:', scriptPath);
         return;
