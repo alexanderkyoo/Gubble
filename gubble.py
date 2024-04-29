@@ -122,6 +122,7 @@ def recieptscanner():
         photo = flask.request.files['photo']
         photo_data = io.BytesIO(photo.read())
         text = reciept.parse_text_from_image(photo_data)
+        print(text)
         if text != '':
             standardized_text = reciept.analyze_text(text)
             items = standardized_text.split('\n')
