@@ -220,7 +220,7 @@ def insertItem(item_info):
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are estimating the usage lifespan of items."},
-            {"role": "user", "content": "How many days would you predict that it would take someone to run out of the following." + item_info.get('item_name') + "Give an exact number of days, and only a single number. Format like this [number] days"}
+            {"role": "user", "content": "How many days would you predict that it would take someone to run out of the following." + item_info.get('item_name') + "Give an exact number of days, and only a single number. Format like this [number] days. If not sure, return N/A"}
         ]
         )
         row = Item(item_name=item_info.get('item_name'), inventory_id=item_info.get('inventory_id'), category_id=item_info.get('category_id'), quantity=item_info.get('quantity'), description=item_info.get('description'), expiry=completion.choices[0].message.content)
