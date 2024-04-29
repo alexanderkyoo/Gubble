@@ -124,16 +124,16 @@ def recieptscanner():
         text = reciept.parse_text_from_image(photo_data)
         print(text)
         if text != '':
-            standardized_text = reciept.analyze_text(text)
-            print(standardized_text)
-            items = standardized_text.split('\n')
-            for item in items:
+            standardized = reciept.analyze_text(text)
+            #print(standardized_text)
+            #items = standardized_text.split('\n')
+            for item in standardized:
                 item_info = {
-                    'item_name': item.split(',')[0].split(': ')[1],
+                    'item_name': item['item_name'],
                     'inventory_id': flask.session['inventory_id'],
-                    'category_id': db.retrieveOrInsertCategory('', item.split(',')[0].split(': ')[1]),
+                    'category_id': db.retrieveOrInsertCategory('', item['item_name']),
                     'description': '',
-                    'quantity': item.split(',')[1].split(': ')[1]
+                    'quantity': item['quantity']
                 }
                 db.insertItem(item_info)
         return flask.redirect(flask.url_for('inventory')) 
